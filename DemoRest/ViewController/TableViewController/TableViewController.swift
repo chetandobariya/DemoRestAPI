@@ -21,7 +21,7 @@ class TableViewController: UITableViewController {
         self.tableView.estimatedRowHeight = 150
         self.tableView.rowHeight = 100
         
-        //tableView.rowHeight = UITableViewAutomaticDimension
+        //tableView.rowHeight = UITableView.automaticDimension
         
         if #available(iOS 10.0, *) {
             tableView.refreshControl = refresh
@@ -56,7 +56,7 @@ class TableViewController: UITableViewController {
     
     private func fetchOwner() {
         
-        DataUpdateHelper.shared.fetchRepositoriesData { (result) in
+        DataUpdateHelper.shared.fetchRepositoriesData { [weak self] (result) in
             
             switch result {
                 
@@ -64,7 +64,7 @@ class TableViewController: UITableViewController {
                 print("\(#function) \(error.localizedDescription)")
                 
             case .success (let repositories):
-                self.refreshRepositories(with: repositories)
+                self?.refreshRepositories(with: repositories)
             }
         }
     }
@@ -111,18 +111,12 @@ extension TableViewController  {
         
         DispatchQueue.main.async {
             
-            let  webViewController = StoryboardScene.Main.webView.instantiate()
+            //let webViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "webView") as? WebViewController
+
+            let webViewController = StoryboardScene.Main.webView.instantiate()
             webViewController.repositoryItems = self.repositories[indexPath.row]
             self.navigationController?.pushViewController(webViewController, animated: true)
-//            guard let unwrappedUrl = self.repositories[indexPath.row].owner?.htmlUrl else{
-//                return
-//            }
-//            let webViewController = WebViewController(with: unwrappedUrl)
-//            self.navigationController?.pushViewController(webViewController, animated: true)
 
-            // let navigationController = UINavigationController(rootViewController: webViewController)
-            //navigationController.modalPresentationStyle = .overFullScreen
-            //self.present(navigationController, animated: true, completion: nil)
         }
         
     }

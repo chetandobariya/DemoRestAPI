@@ -19,7 +19,8 @@ target 'DemoRest' do
 		pod 'AlamofireImage', '~> 3.0'
 		pod 'AlamofireNetworkActivityIndicator', '~> 2.0'
 		pod 'AlamofireObjectMapper', '~> 5.0.0 '
-		
+        pod 'ReachabilitySwift', '~> 3'
+
 
   target 'DemoRestTests' do
     inherit! :search_paths

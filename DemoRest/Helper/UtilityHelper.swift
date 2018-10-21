@@ -138,10 +138,6 @@ extension UIDevice
         }
     }
     
-    
-    class func openSystemSettings() {
-        UIApplication.shared.openURL(URL(string:UIApplication.openSettingsURLString)!)
-    }
 }
 
 

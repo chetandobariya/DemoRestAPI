@@ -29,6 +29,7 @@ struct Repositories {
     private (set) var id: Int?
     private (set) var fork: Bool?
     
+    
 }
 
 extension Repositories: Mappable {

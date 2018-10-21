@@ -42,20 +42,13 @@ class BaseEndpoint: APIRequestConvertible {
     }
 }
 
-class RepositoryEndpoint: BaseEndpoint {
-    
-    override func url() throws -> URL {
-        return try super.url().appendingPathComponent("repositories/")
-    }
-}
-
 class RepositoriesDataEndPoint: ApiEndpoint<Repositories>, APIRequestConvertible {
     
     var encoding: ParameterEncoding {
-        
+
         return JSONEncoding.default
     }
-    
+
     func url() throws -> URL {
         
         return try self.config.baseUrl().appendingPathComponent("repositories")

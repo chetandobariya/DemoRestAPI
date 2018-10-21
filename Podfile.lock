@@ -8,6 +8,7 @@ PODS:
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.0)
   - ObjectMapper (3.3.0)
+  - ReachabilitySwift (3)
   - SwiftGen (4.2.1)
 
 DEPENDENCIES:
@@ -16,6 +17,7 @@ DEPENDENCIES:
   - AlamofireNetworkActivityIndicator (~> 2.0)
   - AlamofireObjectMapper (~> 5.0.0)
   - ObjectMapper (~> 3.3.0)
+  - ReachabilitySwift (~> 3)
   - SwiftGen (~> 4.0)
 
 SPEC REPOS:
@@ -25,6 +27,7 @@ SPEC REPOS:
     - AlamofireNetworkActivityIndicator
     - AlamofireObjectMapper
     - ObjectMapper
+    - ReachabilitySwift
     - SwiftGen
 
 SPEC CHECKSUMS:
@@ -33,8 +36,9 @@ SPEC CHECKSUMS:
   AlamofireNetworkActivityIndicator: 18346ff6d770d9513d0ac6f2d99706f40f93dbaa
   AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
+  ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   SwiftGen: 2ba2a88fc6130b96e38e2baa0029e4bd222ffd85
 
-PODFILE CHECKSUM: c617e4a19b584e37441b9b5a8c8d615c0270e13e
+PODFILE CHECKSUM: 76ec9c4e9cae29550998c2a5666746706e5a0f1c
 
 COCOAPODS: 1.5.3

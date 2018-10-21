@@ -6,7 +6,6 @@
 //  Copyright © 2018 Chetan Dobariya. All rights reserved.
 //
 
-import UIKit
 import AlamofireObjectMapper
 import Alamofire
 import AlamofireNetworkActivityIndicator
@@ -62,9 +61,9 @@ class BackendManager {
     func cancelAllRequests() -> [APIRequest] {
         
         let requests = self.pendingRequests
-        requests.forEach
-            { (request) in
-                request.value.cancel()
+        requests.forEach {
+          (request) in
+            request.value.cancel()
         }
         return requests.map({ $0.value })
     }
@@ -97,20 +96,31 @@ class BackendManager {
         }
     }
     
-    final func didReceive(response: DefaultDataResponse, for apiRequest: APIRequest) {
+    private final func didReceive(response: DefaultDataResponse, for apiRequest: APIRequest) {
         self.removePendingRequest(apiRequest)
     }
     
+    private func removePendingRequest(_ apiRequest: APIRequest) {
+        
+        self.syncQueue.sync {
+            
+            if let request = apiRequest.urlRequest {
+                self.pendingRequests[request] = nil
+            }
+        }
+    }
+
     private final func validatedRequest(endPoint: APIRequestConvertible, progressHandler: @escaping (Progress) -> Void = { (_) in }) -> Result<APIRequest> {
         
         let requestResult = self.createRequest(endPoint: endPoint, progressHandler: progressHandler)
+       
         switch requestResult {
             
         case .failure(let error):
             return .failure(error)
             
         case .success(let request):
-            
+
             request.dataRequest.validate(endPoint.validationBlock)
             return .success(request)
         }
@@ -121,10 +131,9 @@ class BackendManager {
         do {
             
             let encodedUrlRequest = try BackendManager.encodedUrlRquest(for: endPoint)
-            
             let dataRequest = self.sessionManager.request(encodedUrlRequest)
             let apiRequest = APIRequest(endPoint: endPoint, request: dataRequest)
-            
+
             dataRequest.response(completionHandler:
                 { [unowned self] (response) in
                     self.didReceive(response: response, for: apiRequest)
@@ -146,20 +155,5 @@ class BackendManager {
         }
     }
     
-    private func removePendingRequest(_ apiRequest: APIRequest) {
-        
-        self.syncQueue.sync {
-            
-            if let request = apiRequest.urlRequest {
-                self.pendingRequests[request] = nil
-            }
-        }
-    }
 }
 
-extension DataRequest: Equatable {
-    
-    public static func ==(lhs: DataRequest, rhs: DataRequest) -> Bool {
-        return lhs.session == rhs.session
-    }
-}
