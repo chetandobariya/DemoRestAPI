@@ -823,6 +823,7 @@
 			baseConfigurationReference = 445630B515F12DC8844AA5FA /* Pods-DemoRestTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J6QU2ECC2Z;
 				INFOPLIST_FILE = DemoRestTests/Info.plist;
@@ -844,6 +845,7 @@
 			baseConfigurationReference = 93160C658CD1FDF988DE1B57 /* Pods-DemoRestTests.appstore.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J6QU2ECC2Z;
 				INFOPLIST_FILE = DemoRestTests/Info.plist;
@@ -992,6 +994,7 @@
 			baseConfigurationReference = A3D1C1508DE7D7188BB2A5E5 /* Pods-DemoRestTests.adhoc.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J6QU2ECC2Z;
 				INFOPLIST_FILE = DemoRestTests/Info.plist;
@@ -1119,6 +1122,7 @@
 			baseConfigurationReference = 3FDFACE9C1F227064B971A08 /* Pods-DemoRestTests.enterprise.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J6QU2ECC2Z;
 				INFOPLIST_FILE = DemoRestTests/Info.plist;

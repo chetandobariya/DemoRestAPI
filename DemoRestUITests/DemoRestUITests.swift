@@ -38,7 +38,7 @@ class DemoRestUITests: XCTestCase {
         
         let repositoryTableView = app.tables["table-repository"]
         XCTAssertTrue(repositoryTableView.exists, "The repository tableview exists")
-        
+        sleep(5)
         
         let cells = repositoryTableView.cells
         let countTopLevelCells = cells.count
@@ -70,8 +70,8 @@ class DemoRestUITests: XCTestCase {
             
         } else {
             
-            XCTAssert(false, "Was not able to find any table cells")
-            
+           XCTAssert(false, "Was not able to find any table cells")
+
         }
         
     }
