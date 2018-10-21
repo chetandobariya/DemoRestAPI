@@ -7,3 +7,9 @@
 //
 
 import Foundation
+import UIKit
+
+struct Constants {
+    
+    static let defaultAnimationDuration = TimeInterval(0.25)
+}

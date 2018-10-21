@@ -31,4 +31,48 @@ class DemoRestUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
+    func testTableInteraction() {
+        
+        let app = XCUIApplication()
+        app.launch()
+        
+        let repositoryTableView = app.tables["table-repository"]
+        XCTAssertTrue(repositoryTableView.exists, "The repository tableview exists")
+        
+        
+        let cells = repositoryTableView.cells
+        let countTopLevelCells = cells.count
+        
+        
+        if countTopLevelCells > 0 {
+            
+            let promise = expectation(description: "Wait for table cells")
+            
+            for i in 0..<countTopLevelCells {
+                
+                
+                // Grab the first cell and verify that it exists and tap it
+                let tableCell = cells.element(boundBy: i)
+                XCTAssertTrue(tableCell.exists, "The \(i) cell is in place on the table")
+                
+                // Does this actually take us to the next screen
+                tableCell.tap()
+                
+                if i == countTopLevelCells - 1 {
+                    promise.fulfill()
+                }
+                // Back
+                app.navigationBars.buttons.element(boundBy: 0).tap()
+            }
+            
+            waitForExpectations(timeout: 10, handler: nil)
+            XCTAssertTrue(true, "Finished validating the table cells")
+            
+        } else {
+            
+            XCTAssert(false, "Was not able to find any table cells")
+            
+        }
+        
+    }
 }

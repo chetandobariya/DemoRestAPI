@@ -6,4 +6,18 @@
 //  Copyright © 2018 Chetan Dobariya. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+
+extension UIFont {
+    
+    class func arialOf(size: CGFloat) -> UIFont! {
+        
+        return UIFont(name: "Arial", size: size)
+    }
+    
+    class func futuraMediumOf(size: CGFloat) -> UIFont! {
+        
+        return UIFont(name: "Futura-Medium", size: size)
+    }
+}

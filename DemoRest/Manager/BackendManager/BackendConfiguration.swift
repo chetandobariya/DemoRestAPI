@@ -7,3 +7,49 @@
 //
 
 import Foundation
+
+protocol BackendConfiguration {
+    
+    func baseUrl() throws -> URL
+    var timeout: TimeInterval { get }
+    var cachePolicy: URLRequest.CachePolicy { get }
+}
+
+extension BackendConfiguration {
+    
+    var timeout: TimeInterval {
+        
+        return 10.0
+    }
+    
+    var cachePolicy: URLRequest.CachePolicy {
+        
+        return .useProtocolCachePolicy
+    }
+}
+
+struct LiveConfiguration: BackendConfiguration {
+    
+    func baseUrl() throws -> URL {
+        
+        if let url = URL(string: "https://api.github.com/") {
+            return url
+        }
+        
+        throw APIRequestError.invalidUrl(errorDescription: String(describing: self))
+    }
+}
+
+struct TestConfiguration: BackendConfiguration {
+    
+    func baseUrl() throws -> URL {
+        
+        if let url = URL(string: "https://api.github.com/") {
+            return url
+        }
+        
+        throw APIRequestError.invalidUrl(errorDescription: String(describing: self))
+    }
+}
+
+
